@@ -9,7 +9,6 @@ import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.ProgressBar
-import androidx.lifecycle.ViewModelProvider
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,12 +23,11 @@ class MainActivity : AppCompatActivity() {
     private fun webViewSetup() {
         val webView = findViewById<WebView>(R.id.webView)
         val progressBar = findViewById<ProgressBar>(R.id.progressBar)
-
         webView.webChromeClient = WebChromeClient()
 
         webView.apply {
-            loadUrl("")
-            settings.javaScriptEnabled = true
+            loadUrl("") //Type your URL here
+            settings.javaScriptEnabled = true //Remove this line if there are some issues
         }
 
         webView.webViewClient = object : WebViewClient() {
@@ -46,9 +44,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        val wb_webView = findViewById<WebView>(R.id.webView)
-        if (wb_webView.canGoBack())
-            wb_webView.goBack()
+        val webView = findViewById<WebView>(R.id.webView)
+        if (webView.canGoBack())
+            webView.goBack()
         else
             super.onBackPressed()
     }
